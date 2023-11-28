@@ -1,5 +1,6 @@
 import React from 'react';
 import './SearchBar.css'
+import Input from './Input';
 
 const SearchBar = (props) => {
 
@@ -8,11 +9,9 @@ const SearchBar = (props) => {
     return (
         <>
             <div className='input-div'>
-                <input
-                    type={text}
+                <Input type={text}
                     value={value}
-                    onChange={inputValue}
-                />
+                    onChange={inputValue} />
             </div>
 
         </>

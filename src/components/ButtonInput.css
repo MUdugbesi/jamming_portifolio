@@ -6,7 +6,7 @@
 
 }
 
-.submit-input input {
+ input[type='button'] {
     height: 50px;
     width: 200px;
     border: none;
@@ -22,10 +22,10 @@
     transition: background-color 0.3s;
 }
 
-.submit-input input:hover{
+input[type='button']:hover{
     background-color: #3333bb;
 }
 
-.submit-input input:active{
+ input[type='button']:active{
     background-color: #030334d8;
 }

@@ -16,14 +16,13 @@ function App() {
 
   // access Token 
   const [accessToken, seTAccessToken] = useState('')
-  // set Playlist
+  
 
-  const [playlist, setPlaylist] = useState([]);
+  // setAlbum
+  const [album, setAlbum] = useState([]);
 
-  const [artist, setArtist] = useState([])
-  const [album, setAlbum] = useState([])
-
-
+  // setPlaylist
+  const [playlist, setPlaylist] = useState([])
 
   // get access token using useEffect
   useEffect(() => {
@@ -52,7 +51,6 @@ function App() {
   }, []);
 
   // Request params
-
   const option = {
     method: 'GET',
     headers: {
@@ -63,13 +61,11 @@ function App() {
 
   }
 
-
   // get artistID using input value artist name
-
   const getArtistId = async () => {
     if (inputValue) {
-      const url2 = 'https://api.spotify.com/v1/search?q=' + inputValue + '&type=artist&limit=2';
       try {
+        const url2 = 'https://api.spotify.com/v1/search?q=' + inputValue + '&type=artist&limit=2';
         const response = await fetch(url2, option);
         const jsonResponse = await response.json();
         return jsonResponse.artists.items[0].id;
@@ -84,27 +80,33 @@ function App() {
   }
 
   // get artist top-tracks with id;
-
   const artistTracks = async () => {
-
-    const artistId = await getArtistId();
-
-    const url = `https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=ES&limit=2`;
-    const response = await fetch(url, option);
-    const jsonResponse = await response.json();
-    const tracks = jsonResponse.tracks
-    setAlbum(tracks)
+    try {
+      const artistId = await getArtistId();
+      const url = `https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=ES`;
+      const response = await fetch(url, option);
+      const jsonResponse = await response.json();
+      const tracks = jsonResponse.tracks
+      setAlbum(tracks)
+    } catch (e) {
+      console.log(e)
+    }
   }
+
+  // get data from playlist
+
+  
 
   // get data from spotify
   async function getSpotify() {
-    artistTracks();
-    setInputValue('')
-
+    try {
+      await artistTracks();
+      setInputValue('')
+    } catch (e) {
+      console.log(e)
+    }
+   
   }
-
-
-
 
 
 
@@ -114,10 +116,12 @@ function App() {
       <SearchBar value={inputValue} inputValue={handleInputValue} text='text' />
       <ButtonInput search='Search' onclick={getSpotify} />
 
-      <Playlist album={album} />
-
+      <div className='grid_result'>
+        <Playlist album={album} value='Results'/>
+        <Playlist value=''/>
+      </div>
     </div>
   )
 }
 
-export default App
+export default App;

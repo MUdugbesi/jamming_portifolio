@@ -1,17 +1,15 @@
 import React from "react";
 import './ButtonInput.css';
+import Input from "./Input";
 
 const ButtonInput = (props) => {
-   const { search, onclick } = props;
+    const { search, onclick } = props;
     return (
         <>
             <div className="submit-input">
-
-            <input
-                    type="button"
+                <Input type="button"
                     value={search}
-                    onClick={onclick}
-            />
+                    onClick={onclick} />
             </div>
         </>
     )
