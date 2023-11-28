@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600&family=Josefin+Sans:ital@0;1&display=swap');
+
+.submit-input {
+    display: flex;
+    margin-top: 100px;
+
+}
+
+.submit-input input {
+    height: 50px;
+    width: 200px;
+    border: none;
+    border-radius: 30px;
+    background-color: #3333bba1;
+    color: #fff;
+
+    font-size: 24px;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0 auto;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-input input:hover{
+    background-color: #3333bb;
+}
+
+.submit-input input:active{
+    background-color: #030334d8;
+}
