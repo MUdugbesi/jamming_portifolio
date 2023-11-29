@@ -1,42 +1,44 @@
 import React from 'react';
 import './Playlist.css';
 import Input from './Input';
+import Tracks from './Tracks';
 
 const Playlist = (props) => {
-  const { album, onclick, value } = props;
+  const { album, onclick, value, playlist, onRemoveItem } = props;
   return (
     <>
       <div className='result_container'>
+
         <h1 className='result'>{value}</h1>
-
-        {album !== undefined ? album.map((alb, i) => {
+        {value === 'Results' ? album.map((alb, i) => {
           return (
-
-            <div className='album_container'>
-              <div>
-                <h2 className='track_name'>{alb.name}</h2>
-                {/* <img src={alb.album.images[0].url} alt="Images" /> */}
-                <div className='small'>
-                  <small className='artist_name'>{alb.album.artists[0].name}</small>
-                  <small className='album_name'>{alb.album.name}</small>
-                </div>
-              </div>
-              <p onClick={() => alert(album[i].name)}>
-                &#43;
-              </p>
-            </div>
+            <Tracks track={alb} onclick={onclick} />
           )
         }) : ''}
 
+
         {value === '' ?
-          
-          
-          <div className='playlist_input'><Input type="button" value='Save to Spotify' /></div>
-          
+          <>
+            <div className='input_playlist'>
+              <Input />
+              {playlist.map((alb, i) => {
+                return (
+                  <Tracks track={alb} onRemoveClick={onRemoveItem} value='' />
+                )
+              })}
+            </div>
+            <div className='playlist_input'><Input type="button" value='Save to Spotify' /></div>
+          </>
           : ''}
+
+
       </div>
+
+
+
+
     </>
   )
 }
 
-export default Playlist
+export default Playlist;
