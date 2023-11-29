@@ -3,7 +3,7 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import ButtonInput from './components/ButtonInput';
 import Playlist from './components/Playlist';
-
+import Tracks from './components/Tracks';
 import './App.css';
 
 function App() {
@@ -16,13 +16,12 @@ function App() {
 
   // access Token 
   const [accessToken, seTAccessToken] = useState('')
-  
 
   // setAlbum
   const [album, setAlbum] = useState([]);
 
   // setPlaylist
-  const [playlist, setPlaylist] = useState([])
+  const [playlist, setPlaylist] = useState([]);
 
   // get access token using useEffect
   useEffect(() => {
@@ -93,9 +92,22 @@ function App() {
     }
   }
 
-  // get data from playlist
 
-  
+  const removeItemAndAddItem = (itemIdToRemove) => {
+    // filtered is an array
+    const filtered = album.filter(list => list.id === itemIdToRemove)
+    const addItem = (item) => {
+      item = filtered[0]
+      setPlaylist([...playlist, item])
+
+    }
+    addItem()
+  }
+
+  const removeItem = (itemIdToRemove) => {
+    setPlaylist((prevlist) => prevlist.filter(list => list.id !== itemIdToRemove))
+  }
+
 
   // get data from spotify
   async function getSpotify() {
@@ -105,22 +117,25 @@ function App() {
     } catch (e) {
       console.log(e)
     }
-   
+
   }
 
 
-
   return (
-    <div className='App'>
-      <Header />
-      <SearchBar value={inputValue} inputValue={handleInputValue} text='text' />
-      <ButtonInput search='Search' onclick={getSpotify} />
+    <>
+      <div className='App'>
+        <Header />
+        <SearchBar value={inputValue} inputValue={handleInputValue} text='text' />
+        <ButtonInput search='Search' onclick={getSpotify} />
 
-      <div className='grid_result'>
-        <Playlist album={album} value='Results'/>
-        <Playlist value=''/>
+        <div className='grid_result'>
+          <Playlist value="Results" album={album} onclick={removeItemAndAddItem}/>
+          <Playlist value='' playlist={playlist} onRemoveItem={removeItem}/>
+        </div>
+
+
       </div>
-    </div>
+    </>
   )
 }
 
