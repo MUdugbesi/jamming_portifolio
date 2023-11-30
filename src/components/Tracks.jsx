@@ -2,17 +2,26 @@ import React from 'react';
 
 
 
-const Tracks = ({ track, onclick, play, value, onRemoveClick }) => {
+const Tracks = ({ track, onclick, play, value, onRemoveClick, id }) => {
     if (track) {
+
+
         const handleAddClick = () => {
             onclick(track.id)
         }
+
         const handleRemoveItem = () => {
             onRemoveClick(track.id)
         }
+
+
+
+
         return (
             <>
-                <div className='album_container'>
+
+                <div className='album_container' key={id}>
+
                     <div>
                         <h2 className='track_name'>{track.name}</h2>
                         <div className='small'>
@@ -20,6 +29,7 @@ const Tracks = ({ track, onclick, play, value, onRemoveClick }) => {
                             <small className='album_name'>{track.album.name}</small>
                         </div>
                     </div>
+
 
                     {value !== play ?
                         <p onClick={handleRemoveItem}>
