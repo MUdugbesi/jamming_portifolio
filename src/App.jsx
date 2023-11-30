@@ -3,6 +3,7 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import ButtonInput from './components/ButtonInput';
 import Playlist from './components/Playlist';
+// import  AlbumList  from './containers/playlist_container'
 import './App.css';
 
 const CLIENT_ID = '3b1b00ae508c4761b79d99234b5de8a5';
@@ -171,8 +172,6 @@ function App() {
           <Playlist value='' valueTwo={playlistName} playlist={playlist} onRemoveItem={removeItem} handleCreatePlaylist={handleCreatePlaylist} handlePlaylistName={handlePlaylistName}
           />
         </div>
-        <button onClick={createPlayist}>Cliockkk</button>
-        <p>{playlistName}</p>
       </div>
     </>
   )
