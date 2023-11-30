@@ -3,8 +3,10 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import ButtonInput from './components/ButtonInput';
 import Playlist from './components/Playlist';
-import Tracks from './components/Tracks';
 import './App.css';
+
+const CLIENT_ID = '3b1b00ae508c4761b79d99234b5de8a5';
+const CLIENT_SECRET = '22230a11d91e4ee6a3ff52303b29b8dc';
 
 function App() {
 
@@ -23,10 +25,14 @@ function App() {
   // setPlaylist
   const [playlist, setPlaylist] = useState([]);
 
-  // get access token using useEffect
+  // set playlist name
+  const [playlistName, setPlaylistName] = useState('Your Playlists');
+  const handlePlaylistName = ({ target }) => {
+    setPlaylistName(target.value)
+  }
+
+  // get access token on first mount using useEffect
   useEffect(() => {
-    const CLIENT_ID = '3b1b00ae508c4761b79d99234b5de8a5';
-    const CLIENT_SECRET = '22230a11d91e4ee6a3ff52303b29b8dc';
     const url = 'https://accounts.spotify.com/api/token';
     const authParams = {
       method: 'POST',
@@ -55,9 +61,7 @@ function App() {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + accessToken,
-
-    }
-
+    },
   }
 
   // get artistID using input value artist name
@@ -95,17 +99,32 @@ function App() {
 
   const removeItemAndAddItem = (itemIdToRemove) => {
     // filtered is an array
-    const filtered = album.filter(list => list.id === itemIdToRemove)
-    const addItem = (item) => {
-      item = filtered[0]
-      setPlaylist([...playlist, item])
+    const filtered = album.filter(list => list.id === itemIdToRemove);
 
+    const addItem = (item) => {
+      item = filtered[0];
+      if (!playlist.includes(item)) {
+        setPlaylist([...playlist, item])
+      }
     }
-    addItem()
+    addItem();
   }
 
   const removeItem = (itemIdToRemove) => {
     setPlaylist((prevlist) => prevlist.filter(list => list.id !== itemIdToRemove))
+  }
+
+
+  const handleCreatePlaylist = () => {
+    if (playlistName && playlist.length > 1) {
+      alert('submitted');
+      setPlaylist([]);
+      setPlaylistName('')
+    } else {
+      alert('Playlist name cant be empty and add two or more tracks to create list')
+
+    }
+
   }
 
 
@@ -120,6 +139,25 @@ function App() {
 
   }
 
+  async function createPlayist() {
+    const option = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + accessToken,
+      },
+      body: {
+        "name": { playlistName },
+        "description": "New playlist description",
+        "public": true,
+      }
+    }
+    const user_id = '317b66dlyvs3zjdqz5hzwkfdr734';
+    const url = 'https://api.spotify.com/v1/users/' + user_id + '/playlists';
+    const response = await fetch(url, option);
+    const result = await response.json();
+  }
+
 
   return (
     <>
@@ -129,11 +167,12 @@ function App() {
         <ButtonInput search='Search' onclick={getSpotify} />
 
         <div className='grid_result'>
-          <Playlist value="Results" album={album} onclick={removeItemAndAddItem}/>
-          <Playlist value='' playlist={playlist} onRemoveItem={removeItem}/>
+          <Playlist value="Results" album={album} onclick={removeItemAndAddItem} />
+          <Playlist value='' valueTwo={playlistName} playlist={playlist} onRemoveItem={removeItem} handleCreatePlaylist={handleCreatePlaylist} handlePlaylistName={handlePlaylistName}
+          />
         </div>
-
-
+        <button onClick={createPlayist}>Cliockkk</button>
+        <p>{playlistName}</p>
       </div>
     </>
   )
