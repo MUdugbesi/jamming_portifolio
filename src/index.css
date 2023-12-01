@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
-body{
+body {
     /* background: url(https://www.istockphoto.com/photo/audio-speaker-background-with-neon-lights-gm1145059454-308091580?phrase=music%20background&searchscope=image%2Cfilm); */
     background: url('https://media.istockphoto.com/id/1145059454/photo/audio-speaker-background-with-neon-lights.jpg?s=2048x2048&w=is&k=20&c=UwxCaZz9ICcoEfIA4OYxuV2IeBvFc1UBHWPbvxo4Q5k=');
     background-size: cover;
@@ -13,8 +13,10 @@ body{
     height: 1000px;
     background-repeat: repeat;
     /* z-index: 10; */
+    padding-bottom: 500px;
 }
- body::after{
+
+body::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -23,5 +25,5 @@ body{
     top: 0;
     bottom: 0;
     z-index: -1;
-   
+
 }

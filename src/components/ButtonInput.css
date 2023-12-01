@@ -6,7 +6,7 @@
 
 }
 
- input[type='button'] {
+input[type='button'] {
     height: 50px;
     width: 200px;
     border: none;
@@ -22,10 +22,24 @@
     transition: background-color 0.3s;
 }
 
-input[type='button']:hover{
+input[type='button']:hover {
     background-color: #3333bb;
 }
 
- input[type='button']:active{
+input[type='button']:active {
     background-color: #030334d8;
+}
+
+@media only screen and (max-width:520px) {
+    .submit-input {
+        margin-bottom: 100px;
+
+    }
+
+    .submit-input input[type='button'] {
+        width: 130px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
 }

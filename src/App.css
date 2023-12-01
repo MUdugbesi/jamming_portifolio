@@ -1,15 +1,22 @@
-.grid_result{
+.grid_result {
     display: grid;
     grid-template-columns: 1fr 0.7fr;
-    gap:50px;
+    gap: 50px;
 
 }
 
-@media only screen and (max-width: 700px){
-    .grid_result{
+.description {
+    color: #fff;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 0px;
+
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 700px) {
+    .grid_result {
         gap: 0;
         grid-template-columns: 1fr;
     }
-
-    
 }

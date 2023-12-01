@@ -27,7 +27,7 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
 
   // set playlist name
-  const [playlistName, setPlaylistName] = useState('Your Playlists');
+  const [playlistName, setPlaylistName] = useState('Your Playlists Name');
   const handlePlaylistName = ({ target }) => {
     setPlaylistName(target.value)
   }
@@ -164,7 +164,8 @@ function App() {
     <>
       <div className='App'>
         <Header />
-        <SearchBar value={inputValue} inputValue={handleInputValue} text='text' />
+        <h2 className='description'>Get Top Ten Tracks of Selected Artist</h2>
+        <SearchBar value={inputValue} inputValue={handleInputValue} text='text' placeholder='Enter Artist Name' />
         <ButtonInput search='Search' onclick={getSpotify} />
 
         <div className='grid_result'>
