@@ -91,7 +91,12 @@ function App() {
       const response = await fetch(url, option);
       const jsonResponse = await response.json();
       const tracks = jsonResponse.tracks
-      setAlbum(tracks)
+      if (tracks) {
+        setAlbum(tracks)
+      } else {
+        alert('No album found')
+      }
+     
       
     } catch (e) {
       console.log(e)
@@ -140,6 +145,8 @@ console.log(filtered)
       } catch (e) {
         console.log(e)
       }
+    } else {
+      alert('Enter a valid artist name')
     }
   }
 
