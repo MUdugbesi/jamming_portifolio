@@ -43,31 +43,37 @@
     display: flex;
     height: 30px;
     align-items: center;
- 
+
 
 }
 
 .artist_name,
-.album_name, .album_link {
+.album_name,
+.album_link {
     color: #e0dfdf;
     font-size: 1rem;
     margin-right: 10px;
 }
 
-.artist_name {
+.artist_name, .album_name {
     padding-right: 10px;
     border-right: 1px solid #fff;
 
 }
 
-a{
-    text-decoration: underline;
+a {
+    text-decoration: none;
     color: #fff;
-    border-left: 1px solid #fff;
-    padding-left: 10px;
+    border-bottom: 1px solid #fff;
+
+    transition: all 0.5s;
+    
+   
 }
-a:active{
+
+a:active {
     color: #1d0343;
+    border-color: #1d0343;
 }
 
 .album_container p {
@@ -127,6 +133,12 @@ a:active{
         font-size: 1.5rem;
         font-weight: 500;
     }
+    .artist_name,
+    .album_name,
+    .album_link {
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
 
 }
 
@@ -150,13 +162,13 @@ a:active{
         font-weight: 400;
     }
 
-    
-.track_name {
-   
-    font-size: 1.25rem;
-    font-weight: 400;
+    .track_name {
 
-}
+        font-size: 1.25rem;
+        font-weight: 400;
+
+    }
+
     .playlist_input input {
         width: 150px;
         height: 40px;
@@ -165,4 +177,53 @@ a:active{
         font-size: 0.9rem;
     }
 
+
+    .artist_name,
+    .album_name,
+    .album_link {
+       
+        font-size: 0.8rem;
+        margin-right: 5px;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+@media only screen and (max-width:355px) {
+  
+
+    .result {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .input_playlist input[type='text'] {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .track_name {
+
+        font-size: 0.8rem;
+        font-weight: 500;
+
+    }
+
+
+    .artist_name,
+    .album_name,
+    .album_link {
+       
+        font-size: 0.7rem;
+        margin-right: 5px;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .playlist_input input {
+        width: 100px;
+        height: 30px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+        font-size: 0.6rem;
+    }
 }
