@@ -118,7 +118,8 @@ function App() {
 
   const handleCreatePlaylist = () => {
     if (playlistName && playlist.length > 1) {
-      alert('submitted');
+      alert('Still working on this functionality')
+      alert('Successfully Saved to spotify');
       setPlaylist([]);
       setPlaylistName('')
     } else {
@@ -131,13 +132,14 @@ function App() {
 
   // get data from spotify
   async function getSpotify() {
-    try {
-      await artistTracks();
-      setInputValue('')
-    } catch (e) {
-      console.log(e)
+    if (inputValue) {
+      try {
+        await artistTracks();
+        setInputValue('')
+      } catch (e) {
+        console.log(e)
+      }
     }
-
   }
 
   async function createPlayist() {
