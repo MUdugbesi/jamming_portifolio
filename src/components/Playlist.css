@@ -43,11 +43,12 @@
     display: flex;
     height: 30px;
     align-items: center;
+ 
 
 }
 
 .artist_name,
-.album_name {
+.album_name, .album_link {
     color: #e0dfdf;
     font-size: 1rem;
     margin-right: 10px;
@@ -57,6 +58,16 @@
     padding-right: 10px;
     border-right: 1px solid #fff;
 
+}
+
+a{
+    text-decoration: underline;
+    color: #fff;
+    border-left: 1px solid #fff;
+    padding-left: 10px;
+}
+a:active{
+    color: #1d0343;
 }
 
 .album_container p {

@@ -14,9 +14,6 @@ const Tracks = ({ track, onclick, play, value, onRemoveClick, id }) => {
             onRemoveClick(track.id)
         }
 
-
-
-
         return (
             <>
 
@@ -27,6 +24,7 @@ const Tracks = ({ track, onclick, play, value, onRemoveClick, id }) => {
                         <div className='small'>
                             <small className='artist_name'>{track.artists[0].name}</small>
                             <small className='album_name'>{track.album.name}</small>
+                            <small className='album_link'><a href={track.album.external_urls.spotify}>View song</a></small>
                         </div>
                     </div>
 

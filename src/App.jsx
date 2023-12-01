@@ -92,6 +92,7 @@ function App() {
       const jsonResponse = await response.json();
       const tracks = jsonResponse.tracks
       setAlbum(tracks)
+      
     } catch (e) {
       console.log(e)
     }
@@ -101,7 +102,7 @@ function App() {
   const removeItemAndAddItem = (itemIdToRemove) => {
     // filtered is an array
     const filtered = album.filter(list => list.id === itemIdToRemove);
-
+console.log(filtered)
     const addItem = (item) => {
       item = filtered[0];
       if (!playlist.includes(item)) {
