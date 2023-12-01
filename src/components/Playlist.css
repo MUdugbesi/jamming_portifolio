@@ -188,6 +188,15 @@ a:active {
         margin-top: 10px;
     }
 }
+@media only screen and (max-width:465px) {
+    .artist_name,
+    .album_name,
+    .album_link {
+    
+        margin-top: 30px;
+    }
+}
+
 @media only screen and (max-width:355px) {
   
 
